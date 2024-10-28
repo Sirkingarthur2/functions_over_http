@@ -1,11 +1,13 @@
-# urls.py
 from django.contrib import admin
 from django.urls import path
-from app import views  # Ensure to import your views
+
+from app.views import hey_you
+from app.views import age_in
+from app.views import order_total
 
 urlpatterns = [
+    path('hey/<name>', hey_you),
+    path('age-in/<this>/<that>', age_in),
+    path('order-total/<burgers>/<fries>/<drinks>', order_total),
     path('admin/', admin.site.urls),
-    path('hey/<str:name>/', views.hey_you, name='hey_you'),
-    path('age-in/<int:end>/<int:birthyear>/', views.age_in, name='age_in'),
-    path('order-total/<int:burgers>/<int:fries>/<int:drinks>/', views.order_total, name='order_total'),
 ]
